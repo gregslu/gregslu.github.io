@@ -1,58 +1,165 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<title>PomoKing Terms & Conditions</title>
-<style>
-body { font-family: Arial, sans-serif; line-height: 1.6; padding: 40px; max-width: 900px; margin: auto; }
-h1, h2 { color: #333; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PomoKing Terms & Conditions</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#0e1513',
+                        primary: {
+                            DEFAULT: '#10b981', // Emerald 500
+                            hover: '#34d399',   // Emerald 400
+                        },
+                        secondary: '#f59e0b', // Amber 500
+                        surface: 'rgba(255, 255, 255, 0.03)',
+                        surfaceHover: 'rgba(255, 255, 255, 0.08)'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0e1513;
+            color: #ffffff;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #10b981, #34d399, #6ee7b7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glass-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+    </style>
 </head>
-<body>
+<body class="antialiased font-sans min-h-screen flex flex-col">
 
-<h1>Terms & Conditions</h1>
-<p>Last updated: May 2026</p>
+    <!-- Header Navigation -->
+    <nav class="w-full border-b border-white/5 bg-background/70 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-8 sm:px-16 lg:px-24">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                    <img src="assets/icons/icon.png" alt="PomoKing Logo" class="h-10 w-10 rounded-xl shadow-lg shadow-primary/20">
+                    <span class="font-display font-bold text-xl tracking-wide text-white">PomoKing</span>
+                </a>
+                <a href="index.html" class="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors bg-white/5 hover:bg-white/10 px-4 py-2 rounded-full border border-white/10">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </nav>
 
-<p>These Terms & Conditions ("Terms") govern your use of the mobile application <strong>PomoKing</strong>, developed by <strong>Thirteensoft</strong>.</p>
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-3xl mx-auto px-8 sm:px-16 lg:px-24 py-16">
+        <div class="glass-card rounded-3xl p-8 sm:p-12">
+            <h1 class="text-4xl sm:text-5xl font-display font-bold text-gradient mb-2">Terms & Conditions</h1>
+            <p class="text-sm text-gray-500 mb-8">Last updated: May 2026</p>
 
-<h2>1. Acceptance of Terms</h2>
-<p>By using the App, you agree to these Terms. If you do not agree, do not use the App.</p>
+            <div class="prose prose-invert max-w-none text-gray-300 space-y-6">
+                <p>These Terms & Conditions ("Terms") govern your use of the mobile application <strong class="text-white">PomoKing</strong>, developed by <strong class="text-white">Thirteensoft</strong>.</p>
 
-<h2>2. Description of Service</h2>
-<p>PomoKing is a productivity tool that provides Pomodoro timer functionality, statistics, and insights.</p>
+                <div>
+                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">1. Acceptance of Terms</h2>
+                    <p class="leading-relaxed">By using the App, you agree to these Terms. If you do not agree, do not use the App.</p>
+                </div>
 
-<h2>3. Subscriptions & Pro Purchases</h2>
-<ul>
-<li>The App offers a "Pro" version accessible via monthly or annual subscriptions, or a one-time lifetime purchase.</li>
-<li>Payments are processed via Apple App Store or Google Play.</li>
-<li>Subscriptions automatically renew unless canceled through your store account settings.</li>
-<li>One-time purchases provide permanent access to current Pro features without additional renewal fees.</li>
-</ul>
+                <div>
+                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">2. Description of Service</h2>
+                    <p class="leading-relaxed">PomoKing is a productivity tool that provides Pomodoro timer functionality, statistics, and insights.</p>
+                </div>
 
-<h2>4. No Guarantees</h2>
-<p>The App is provided "as is" without warranties of any kind. We do not guarantee uninterrupted or error-free operation.</p>
+                <div>
+                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">3. Subscriptions & Pro Purchases</h2>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-400">
+                        <li>The App offers a "Pro" version accessible via monthly or annual subscriptions, or a one-time lifetime purchase.</li>
+                        <li>Payments are processed via Apple App Store or Google Play.</li>
+                        <li>Subscriptions automatically renew unless canceled through your store account settings.</li>
+                        <li>One-time purchases provide permanent access to current Pro features without additional renewal fees.</li>
+                    </ul>
+                </div>
 
-<h2>5. Data & Backup Responsibility</h2>
-<p>You are solely responsible for maintaining backups of your data. We recommend exporting your Pomodoro history regularly.</p>
+                <div>
+                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">4. No Guarantees</h2>
+                    <p class="leading-relaxed">The App is provided "as is" without warranties of any kind. We do not guarantee uninterrupted or error-free operation.</p>
+                </div>
 
-<h2>6. Data Loss Disclaimer</h2>
-<p>Thirteensoft is not responsible for any loss of data, including but not limited to loss caused by device malfunction, app deletion, or failed backups.</p>
+                <div>
+                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">5. Data & Backup Responsibility</h2>
+                    <p class="leading-relaxed">You are solely responsible for maintaining backups of your data. We recommend exporting your Pomodoro history regularly.</p>
+                </div>
 
-<h2>7. Limitation of Liability</h2>
-<p>To the maximum extent permitted by law, Thirteensoft shall not be liable for any indirect, incidental, or consequential damages.</p>
+                <div>
+                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">6. Data Loss Disclaimer</h2>
+                    <p class="leading-relaxed">Thirteensoft is not responsible for any loss of data, including but not limited to loss caused by device malfunction, app deletion, or failed backups.</p>
+                </div>
 
-<h2>8. Third-Party Services</h2>
-<p>The App uses third-party services such as RevenueCat and Sentry. We are not responsible for their operation or policies.</p>
+                <div>
+                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">7. Limitation of Liability</h2>
+                    <p class="leading-relaxed">To the maximum extent permitted by law, Thirteensoft shall not be liable for any indirect, incidental, or consequential damages.</p>
+                </div>
 
-<h2>9. Termination</h2>
-<p>We may terminate or suspend access to the App at any time without notice.</p>
+                <div>
+                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">8. Third-Party Services</h2>
+                    <p class="leading-relaxed">The App uses third-party services such as RevenueCat and Sentry. We are not responsible for their operation or policies.</p>
+                </div>
 
-<h2>10. Governing Law</h2>
-<p>These Terms shall be governed by the laws of Poland and the European Union.</p>
+                <div>
+                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">9. Termination</h2>
+                    <p class="leading-relaxed">We may terminate or suspend access to the App at any time without notice.</p>
+                </div>
 
-<h2>11. Contact</h2>
-<p>For questions, contact:<br>
-<strong>thirteensoft13@gmail.com</strong></p>
+                <div>
+                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">10. Governing Law</h2>
+                    <p class="leading-relaxed">These Terms shall be governed by the laws of Poland and the European Union.</p>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">11. Contact</h2>
+                    <p class="leading-relaxed">For questions, contact:<br>
+                        <a href="mailto:thirteensoft13@gmail.com" class="text-primary hover:text-primary-hover font-semibold transition-colors">thirteensoft13@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 bg-background/50 pt-8 pb-8 mt-auto">
+        <div class="max-w-5xl mx-auto px-8 sm:px-16 lg:px-24 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <img src="assets/icons/icon.png" alt="PomoKing Logo" class="h-6 w-6 rounded-lg grayscale opacity-70">
+                <span class="font-display font-bold text-sm text-gray-500">PomoKing</span>
+            </div>
+            <p class="text-xs text-gray-500">© 2026 PomoKing. All rights reserved.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
