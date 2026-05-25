@@ -65,3 +65,12 @@ Since this is for GitHub Pages:
 - All paths must be relative (e.g., `href="privacy_policy.html"`, `src="assets/images/logo.png"`).
 - Never use absolute server paths like `/assets/...` because GitHub Pages often hosts sites in a subfolder (e.g., `username.github.io/repo-name/`), which will break absolute root paths.
 - Ensure all pages share identical styling and navigation elements for consistency.
+
+## 6. SEO Optimization & Discoverability
+
+To ensure the landing page ranks well on Google and looks professional when shared on social media, always include comprehensive SEO metadata:
+
+- **Primary Meta Tags:** Add highly descriptive `<title>`, `<meta name="description">`, and `<meta name="keywords">` tags using the app's title, core features, and use-cases.
+- **Open Graph & Twitter Cards:** Add `og:title`, `og:description`, `og:image`, `og:url`, `og:type="website"`, and `twitter:card="summary_large_image"` to generate rich preview cards when the link is shared on platforms like Discord, Twitter, or iMessage.
+- **Canonical Links:** Include `<link rel="canonical" href="...">` to prevent duplicate content issues.
+- **Sitemap:** Generate a `sitemap.xml` at the root directory listing all pages (`index.html`, `privacy_policy.html`, etc.) with their respective `<changefreq>` and `<priority>` to speed up search engine indexing.
