@@ -32,7 +32,7 @@ Include Tailwind via CDN and configure the theme directly in the `<head>` of the
         theme: {
             extend: {
                 colors: {
-                    background: '#0e1513',
+                    background: '#08110e',
                     primary: '#10b981',
                 },
                 fontFamily: {
@@ -47,7 +47,7 @@ Include Tailwind via CDN and configure the theme directly in the `<head>` of the
 
 ## 3. Design Aesthetics & Best Practices
 
-- **Rich Aesthetics:** Create a "premium" feel. Use dark modes (e.g., `#0e1513`), dynamic gradients (`text-gradient`, `radial-gradient` backgrounds), and vibrant primary colors.
+- **Rich Aesthetics:** Create a "premium" feel. Use dark modes (e.g., `#08110e`), dynamic gradients (`text-gradient`, `radial-gradient` backgrounds), and vibrant primary colors.
 - **Glassmorphism:** Use translucent backgrounds with backdrop blurs for navbars and cards to create depth.
   - *Example:* `bg-white/5 border border-white/10 backdrop-blur-md`
 - **Condense Content:** Limit maximum width of the main content so it doesn't stretch too wide on desktop. `max-w-5xl` or `max-w-6xl` paired with generous horizontal padding (`px-8 sm:px-16 lg:px-24`) works best.

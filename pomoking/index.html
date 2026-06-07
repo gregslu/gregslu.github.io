@@ -1,34 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PomoKing: Pomodoro Focus Timer</title>
-    <meta name="description" content="Looking for a smarter way to master your focus, build daily habits, or supercharge your study productivity? PomoKing combines an advanced Pomodoro timer with deep visual analytics to help you beat procrastination and crush your todos.">
-    <meta name="keywords" content="Pomodoro timer, focus timer, study timer, habit tracker, productivity app, time management, PomoKing, focus app, daily habits">
+    <meta name="description"
+        content="Looking for a smarter way to master your focus, build daily habits, or supercharge your study productivity? PomoKing combines an advanced Pomodoro timer with deep visual analytics to help you beat procrastination and crush your todos.">
+    <meta name="keywords"
+        content="Pomodoro timer, focus timer, study timer, habit tracker, productivity app, time management, PomoKing, focus app, daily habits">
     <link rel="canonical" href="https://gregslu.github.io/pomoking/">
     <meta property="og:title" content="PomoKing: Pomodoro Focus Timer">
-    <meta property="og:description" content="Pomodoro focus timer for study & work. Track habits with custom tags, visual heatmaps, and advanced statistics.">
-    <meta property="og:image" content="https://gregslu.github.io/pomoking/assets/feature_graphic/Gemini_Generated_Image_1sd6rd1sd6rd1sd6-1024x500 copy.png">
+    <meta property="og:description"
+        content="Pomodoro focus timer for study & work. Track habits with custom tags, visual heatmaps, and advanced statistics.">
+    <meta property="og:image" content="https://gregslu.github.io/pomoking/assets/feature_graphic/feature_graphic.png">
     <meta property="og:url" content="https://gregslu.github.io/pomoking/">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Tailwind Config -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        background: '#0e1513',
+                        background: '#08110e',
                         primary: {
                             DEFAULT: '#10b981', // Emerald 500
                             hover: '#34d399',   // Emerald 400
@@ -52,7 +58,7 @@
 
     <style>
         body {
-            background-color: #0e1513;
+            background-color: #08110e;
             color: #ffffff;
             overflow-x: hidden;
         }
@@ -66,7 +72,7 @@
         }
 
         .glass-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.05);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
@@ -82,19 +88,37 @@
 
         /* Phone image float animation */
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
+
         .animate-float {
             animation: float 6s ease-in-out infinite;
         }
 
         @keyframes float-delayed {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
+
         .animate-float-delayed {
             animation: float-delayed 7s ease-in-out infinite 1s;
         }
@@ -105,16 +129,18 @@
             transform: translateY(30px);
             transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
+
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         .reveal-left {
             opacity: 0;
             transform: translateX(-40px);
             transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
+
         .reveal-left.active {
             opacity: 1;
             transform: translateX(0);
@@ -125,6 +151,7 @@
             transform: translateX(40px);
             transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
+
         .reveal-right.active {
             opacity: 1;
             transform: translateX(0);
@@ -134,6 +161,7 @@
         .img-glow-wrapper {
             position: relative;
         }
+
         .img-glow-wrapper::before {
             content: '';
             position: absolute;
@@ -148,23 +176,31 @@
         }
     </style>
 </head>
+
 <body class="antialiased font-sans selection:bg-primary selection:text-white">
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 glass border-b border-white/5 transition-all duration-300" id="navbar">
         <div class="max-w-5xl mx-auto px-8 sm:px-16 lg:px-24">
             <div class="flex items-center justify-between h-20">
-                <a href="#" onclick="window.scrollTo(0,0); return false;" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
-                    <img src="assets/icons/icon.png" alt="PomoKing Logo" class="h-10 w-10 rounded-xl shadow-lg shadow-primary/20">
+                <a href="#" onclick="window.scrollTo(0,0); return false;"
+                    class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                    <img src="assets/icons/icon.png" alt="PomoKing Logo"
+                        class="h-10 w-10 rounded-xl shadow-lg shadow-primary/20">
                     <span class="font-display font-bold text-xl tracking-wide text-white">PomoKing</span>
                 </a>
                 <div class="hidden md:block">
-                    <a href="#features" class="text-gray-300 hover:text-white transition-colors px-4 py-2 text-sm font-medium">Features</a>
-                    <a href="#analytics" class="text-gray-300 hover:text-white transition-colors px-4 py-2 text-sm font-medium">Analytics</a>
-                    <a href="#benefits" class="text-gray-300 hover:text-white transition-colors px-4 py-2 text-sm font-medium">Benefits</a>
+                    <a href="#features"
+                        class="text-gray-300 hover:text-white transition-colors px-4 py-2 text-sm font-medium">Features</a>
+                    <a href="#analytics"
+                        class="text-gray-300 hover:text-white transition-colors px-4 py-2 text-sm font-medium">Analytics</a>
+                    <a href="#benefits"
+                        class="text-gray-300 hover:text-white transition-colors px-4 py-2 text-sm font-medium">Benefits</a>
                 </div>
                 <div>
-                    <a href="https://play.google.com/store/apps/details?id=com.pomoking.app" target="_blank" rel="noopener noreferrer" class="bg-white/10 hover:bg-white/20 text-white px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border border-white/10 hover:border-white/30 backdrop-blur-sm">
+                    <a href="https://play.google.com/store/apps/details?id=com.pomoking.app" target="_blank"
+                        rel="noopener noreferrer"
+                        class="bg-white/10 hover:bg-white/20 text-white px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border border-white/10 hover:border-white/30 backdrop-blur-sm">
                         Get the App
                     </a>
                 </div>
@@ -175,50 +211,70 @@
     <!-- Hero Section -->
     <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-screen flex items-center">
         <!-- Background decorative elements -->
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[800px] bg-hero-glow -z-10 pointer-events-none"></div>
-        <div class="absolute top-1/4 -left-64 w-96 h-96 bg-primary/20 rounded-full mix-blend-screen filter blur-[120px] opacity-50 animate-pulse"></div>
-        <div class="absolute bottom-0 -right-64 w-96 h-96 bg-secondary/10 rounded-full mix-blend-screen filter blur-[120px] opacity-30"></div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[800px] bg-hero-glow -z-10 pointer-events-none">
+        </div>
+        <div
+            class="absolute top-1/4 -left-64 w-96 h-96 bg-primary/20 rounded-full mix-blend-screen filter blur-[120px] opacity-50 animate-pulse">
+        </div>
+        <div
+            class="absolute bottom-0 -right-64 w-96 h-96 bg-secondary/10 rounded-full mix-blend-screen filter blur-[120px] opacity-30">
+        </div>
 
         <div class="max-w-5xl mx-auto px-8 sm:px-16 lg:px-24 relative z-10 w-full">
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
                 <div class="max-w-2xl reveal-left">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
                         <span class="relative flex h-2 w-2">
-                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                          <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                         </span>
                         The ultimate time management companion
                     </div>
-                    <h1 class="text-5xl lg:text-7xl font-display font-bold leading-[1.1] tracking-tight mb-6 text-white">
+                    <h1
+                        class="text-5xl lg:text-7xl font-display font-bold leading-[1.1] tracking-tight mb-6 text-white">
                         Master your focus.<br>
                         <span class="text-gradient">Build better habits.</span>
                     </h1>
                     <p class="text-lg text-gray-400 mb-8 leading-relaxed max-w-xl">
-                        Looking for a smarter way to master your focus, build lasting daily habits, or supercharge your study productivity? PomoKing combines an advanced Pomodoro timer with deep visual analytics to help you stay on track, and even finish your remaining todos along the way.
+                        Looking for a smarter way to master your focus, build lasting daily habits, or supercharge your
+                        study productivity? PomoKing combines an advanced Pomodoro timer with deep visual analytics to
+                        help you stay on track, and even finish your remaining todos along the way.
                     </p>
                     <div class="flex flex-wrap items-center gap-4">
-                        <a href="https://play.google.com/store/apps/details?id=com.pomoking.app" target="_blank" rel="noopener noreferrer" class="bg-primary hover:bg-primary-hover text-background px-8 py-4 rounded-full font-semibold transition-all duration-300 shadow-[0_0_40px_rgba(16,185,129,0.3)] hover:shadow-[0_0_60px_rgba(16,185,129,0.5)] transform hover:-translate-y-1 flex items-center gap-2">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                        <a href="https://play.google.com/store/apps/details?id=com.pomoking.app" target="_blank"
+                            rel="noopener noreferrer"
+                            class="bg-primary hover:bg-primary-hover text-background px-8 py-4 rounded-full font-semibold transition-all duration-300 shadow-[0_0_40px_rgba(16,185,129,0.3)] hover:shadow-[0_0_60px_rgba(16,185,129,0.5)] transform hover:-translate-y-1 flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" />
+                            </svg>
                             Get it on Google Play
                         </a>
-                        <div class="hidden sm:flex flex-col items-center bg-white/5 p-3 rounded-2xl border border-white/10 backdrop-blur-sm transition-transform hover:-translate-y-1 ml-4">
-                            <img src="assets/qr-codes/qr-code.svg" alt="Download PomoKing QR Code" class="w-32 h-32 rounded-xl bg-white p-2">
-                            <span class="text-xs text-gray-400 mt-2 font-medium uppercase tracking-wider">Scan to Download</span>
+                        <div
+                            class="hidden sm:flex flex-col items-center bg-white/5 p-3 rounded-2xl border border-white/10 backdrop-blur-sm transition-transform hover:-translate-y-1 ml-4">
+                            <img src="assets/qr-codes/qr-code.svg" alt="Download PomoKing QR Code"
+                                class="w-32 h-32 rounded-xl bg-white p-2">
+                            <span class="text-xs text-gray-400 mt-2 font-medium uppercase tracking-wider">Scan to
+                                Download</span>
                         </div>
                     </div>
-                    
+
                     <div class="mt-10 flex items-center gap-4 text-sm text-gray-500 font-medium">
                         <div class="flex -space-x-2">
-                            <div class="w-8 h-8 rounded-full bg-gray-800 border-2 border-[#0e1513]"></div>
-                            <div class="w-8 h-8 rounded-full bg-gray-700 border-2 border-[#0e1513]"></div>
-                            <div class="w-8 h-8 rounded-full bg-gray-600 border-2 border-[#0e1513]"></div>
+                            <div class="w-8 h-8 rounded-full bg-gray-800 border-2 border-[#08110e]"></div>
+                            <div class="w-8 h-8 rounded-full bg-gray-700 border-2 border-[#08110e]"></div>
+                            <div class="w-8 h-8 rounded-full bg-gray-600 border-2 border-[#08110e]"></div>
                         </div>
                         <p>Built for students & professionals</p>
                     </div>
                 </div>
-                
+
                 <div class="relative lg:ml-auto img-glow-wrapper reveal-right">
-                    <img src="assets/phone_screens/Apple%20iPhone%2014%20Pro%20Max%20Screenshot%201.png" alt="PomoKing App Interface" class="w-[300px] lg:w-[360px] mx-auto animate-float drop-shadow-2xl rounded-[3rem] border border-white/10">
+                    <img src="assets/phone_screens/Apple%20iPhone%2014%20Pro%20Max%20Screenshot%201.png"
+                        alt="PomoKing App Interface"
+                        class="w-[300px] lg:w-[360px] mx-auto animate-float drop-shadow-2xl rounded-[3rem] border border-white/10">
                 </div>
             </div>
         </div>
@@ -232,32 +288,50 @@
         <div class="max-w-5xl mx-auto px-8 sm:px-16 lg:px-24">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div class="order-2 lg:order-1 relative img-glow-wrapper reveal-left">
-                    <img src="assets/phone_screens/Apple%20iPhone%2014%20Pro%20Max%20Screenshot%203.png" alt="Custom Activity Tags" class="w-[280px] lg:w-[320px] mx-auto animate-float-delayed drop-shadow-2xl rounded-[3rem] border border-white/10">
+                    <img src="assets/phone_screens/Apple%20iPhone%2014%20Pro%20Max%20Screenshot%203.png"
+                        alt="Custom Activity Tags"
+                        class="w-[280px] lg:w-[320px] mx-auto animate-float-delayed drop-shadow-2xl rounded-[3rem] border border-white/10">
                 </div>
                 <div class="order-1 lg:order-2 reveal-right">
-                    <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 border border-primary/20 text-primary">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path></svg>
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 border border-primary/20 text-primary">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z">
+                            </path>
+                        </svg>
                     </div>
-                    <h2 class="text-3xl lg:text-4xl font-display font-bold mb-4">Custom Activity Tags for Every Session</h2>
+                    <h2 class="text-3xl lg:text-4xl font-display font-bold mb-4">Custom Activity Tags for Every Session
+                    </h2>
                     <p class="text-gray-400 text-lg mb-8 leading-relaxed">
-                        Stop blindly tracking time. Organize your daily workflow by assigning custom tags to your focus sessions. Categorize your tracking effortlessly to see exactly where your time goes.
+                        Stop blindly tracking time. Organize your daily workflow by assigning custom tags to your focus
+                        sessions. Categorize your tracking effortlessly to see exactly where your time goes.
                     </p>
                     <ul class="space-y-4">
                         <li class="flex items-start gap-3">
                             <div class="mt-1 p-1 rounded-full bg-primary/20 text-primary">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
                             </div>
                             <span class="text-gray-300">Study sessions (Math, Science, Coding, Exam prep)</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <div class="mt-1 p-1 rounded-full bg-primary/20 text-primary">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
                             </div>
                             <span class="text-gray-300">Work projects, deep focus tasks, & freelance hours</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <div class="mt-1 p-1 rounded-full bg-primary/20 text-primary">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
                             </div>
                             <span class="text-gray-300">Personal development, reading, & daily habits</span>
                         </li>
@@ -272,16 +346,26 @@
         <div class="max-w-5xl mx-auto px-8 sm:px-16 lg:px-24">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div class="reveal-left">
-                    <div class="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center mb-6 border border-secondary/20 text-secondary">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center mb-6 border border-secondary/20 text-secondary">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                            </path>
+                        </svg>
                     </div>
                     <h2 class="text-3xl lg:text-4xl font-display font-bold mb-4">Deep Analytics & Visual Heatmaps</h2>
                     <p class="text-gray-400 text-lg leading-relaxed">
-                        Unlock powerful visual tracking data that shows your dedication. Track your progress with advanced statistics, a detailed focus history, and daily productivity trends. See your hard work come to life with an interactive activity heatmap that highlights your weekly trends and most productive hours.
+                        Unlock powerful visual tracking data that shows your dedication. Track your progress with
+                        advanced statistics, a detailed focus history, and daily productivity trends. See your hard work
+                        come to life with an interactive activity heatmap that highlights your weekly trends and most
+                        productive hours.
                     </p>
                 </div>
                 <div class="relative img-glow-wrapper reveal-right">
-                    <img src="assets/phone_screens/Apple%20iPhone%2014%20Pro%20Max%20Screenshot%202.png" alt="Analytics and Heatmaps" class="w-[280px] lg:w-[320px] mx-auto animate-float drop-shadow-2xl rounded-[3rem] border border-white/10">
+                    <img src="assets/phone_screens/Apple%20iPhone%2014%20Pro%20Max%20Screenshot%202.png"
+                        alt="Analytics and Heatmaps"
+                        class="w-[280px] lg:w-[320px] mx-auto animate-float drop-shadow-2xl rounded-[3rem] border border-white/10">
                 </div>
             </div>
         </div>
@@ -292,18 +376,28 @@
         <div class="max-w-5xl mx-auto px-8 sm:px-16 lg:px-24">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div class="order-2 lg:order-1 relative img-glow-wrapper reveal-left">
-                    <img src="assets/phone_screens/Apple%20iPhone%2014%20Pro%20Max%20Screenshot%204.png" alt="Focus Score and Achievements" class="w-[280px] lg:w-[320px] mx-auto animate-float-delayed drop-shadow-2xl rounded-[3rem] border border-white/10">
+                    <img src="assets/phone_screens/Apple%20iPhone%2014%20Pro%20Max%20Screenshot%204.png"
+                        alt="Focus Score and Achievements"
+                        class="w-[280px] lg:w-[320px] mx-auto animate-float-delayed drop-shadow-2xl rounded-[3rem] border border-white/10">
                 </div>
                 <div class="order-1 lg:order-2 reveal-right">
-                    <div class="w-12 h-12 rounded-2xl bg-purple-500/10 flex items-center justify-center mb-6 border border-purple-500/20 text-purple-400">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-purple-500/10 flex items-center justify-center mb-6 border border-purple-500/20 text-purple-400">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z">
+                            </path>
+                        </svg>
                     </div>
-                    <h2 class="text-3xl lg:text-4xl font-display font-bold mb-4">Show Off Your Focus Score & Share Progress</h2>
+                    <h2 class="text-3xl lg:text-4xl font-display font-bold mb-4">Show Off Your Focus Score & Share
+                        Progress</h2>
                     <p class="text-gray-400 text-lg leading-relaxed mb-6">
-                        Celebrate your discipline! PomoKing calculates a unique weekly productivity score based on your consistency and time management. 
+                        Celebrate your discipline! PomoKing calculates a unique weekly productivity score based on your
+                        consistency and time management.
                     </p>
                     <p class="text-gray-400 text-lg leading-relaxed">
-                        Proudly share your weekly heatmap view and achievements directly with friends, study groups, or on social media to stay motivated and accountable.
+                        Proudly share your weekly heatmap view and achievements directly with friends, study groups, or
+                        on social media to stay motivated and accountable.
                     </p>
                 </div>
             </div>
@@ -315,57 +409,92 @@
         <div class="max-w-5xl mx-auto px-8 sm:px-16 lg:px-24">
             <div class="text-center max-w-2xl mx-auto mb-16 reveal">
                 <h2 class="text-3xl lg:text-4xl font-display font-bold mb-4">Why PomoKing Helps You Learn & Grow</h2>
-                <p class="text-gray-400 text-lg">Designed to optimize your time and eliminate distractions so you can focus on what matters.</p>
+                <p class="text-gray-400 text-lg">Designed to optimize your time and eliminate distractions so you can
+                    focus on what matters.</p>
             </div>
-            
+
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Card 1 -->
                 <div class="glass-card rounded-2xl p-6 reveal transition-transform hover:-translate-y-1">
-                    <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-4 text-primary">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <div
+                        class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-4 text-primary">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
                     </div>
                     <h3 class="text-xl font-bold font-display mb-2 text-white">Seamless Timer</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Classic focus intervals with adjustable break times tailored to your needs.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">Classic focus intervals with adjustable break times
+                        tailored to your needs.</p>
                 </div>
                 <!-- Card 2 -->
                 <div class="glass-card rounded-2xl p-6 reveal transition-transform hover:-translate-y-1">
-                    <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-4 text-primary">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                    <div
+                        class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-4 text-primary">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4">
+                            </path>
+                        </svg>
                     </div>
                     <h3 class="text-xl font-bold font-display mb-2 text-white">Build Better Habits</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Keep your eyes on the prize and reinforce new daily habits with structured, consistent focus sessions.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">Keep your eyes on the prize and reinforce new daily
+                        habits with structured, consistent focus sessions.</p>
                 </div>
                 <!-- Card 3 -->
                 <div class="glass-card rounded-2xl p-6 reveal transition-transform hover:-translate-y-1">
-                    <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-4 text-primary">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    <div
+                        class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-4 text-primary">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z">
+                            </path>
+                        </svg>
                     </div>
                     <h3 class="text-xl font-bold font-display mb-2 text-white">Session Tagging</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Beautiful, color-coded tags to structure your day and categorize sessions.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">Beautiful, color-coded tags to structure your day
+                        and categorize sessions.</p>
                 </div>
                 <!-- Card 4 -->
                 <div class="glass-card rounded-2xl p-6 reveal transition-transform hover:-translate-y-1">
-                    <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-4 text-primary">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+                    <div
+                        class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-4 text-primary">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+                        </svg>
                     </div>
                     <h3 class="text-xl font-bold font-display mb-2 text-white">Visual Heatmap</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">See your weekly and monthly focus consistency at a glance with beautiful grid data.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">See your weekly and monthly focus consistency at a
+                        glance with beautiful grid data.</p>
                 </div>
                 <!-- Card 5 -->
                 <div class="glass-card rounded-2xl p-6 reveal transition-transform hover:-translate-y-1">
-                    <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-4 text-primary">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <div
+                        class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-4 text-primary">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                            </path>
+                        </svg>
                     </div>
                     <h3 class="text-xl font-bold font-display mb-2 text-white">Detailed Analytics</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Track your total minutes, averages, and complete focus history.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">Track your total minutes, averages, and complete
+                        focus history.</p>
                 </div>
                 <!-- Card 6 -->
                 <div class="glass-card rounded-2xl p-6 reveal transition-transform hover:-translate-y-1">
-                    <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-4 text-primary">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                    <div
+                        class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-4 text-primary">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1">
+                            </path>
+                        </svg>
                     </div>
                     <h3 class="text-xl font-bold font-display mb-2 text-white">Accountability</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Quick sharing for weekly stats and productivity scores to stay on track.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">Quick sharing for weekly stats and productivity
+                        scores to stay on track.</p>
                 </div>
             </div>
         </div>
@@ -374,21 +503,33 @@
     <!-- Call to Action -->
     <section class="py-24 relative overflow-hidden">
         <div class="absolute inset-0 bg-primary/5"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[600px] bg-hero-glow -z-10 pointer-events-none opacity-50"></div>
-        
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[600px] bg-hero-glow -z-10 pointer-events-none opacity-50">
+        </div>
+
         <div class="max-w-3xl mx-auto px-8 sm:px-16 lg:px-24 text-center relative z-10 reveal">
-            <h2 class="text-4xl lg:text-5xl font-display font-bold mb-6 text-white">Become the ruler of your productivity</h2>
+            <h2 class="text-4xl lg:text-5xl font-display font-bold mb-6 text-white">Become the ruler of your
+                productivity</h2>
             <p class="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
-                Whether you need a dedicated study timer for finals, a better way to manage your work-from-home schedule, or a visual habit tracker, PomoKing is designed to optimize your time.
+                Whether you need a dedicated study timer for finals, a better way to manage your work-from-home
+                schedule, or a visual habit tracker, PomoKing is designed to optimize your time.
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <a href="https://play.google.com/store/apps/details?id=com.pomoking.app" target="_blank" rel="noopener noreferrer" class="inline-flex bg-primary hover:bg-primary-hover text-background px-10 py-5 rounded-full font-bold text-lg transition-all duration-300 shadow-[0_0_40px_rgba(16,185,129,0.3)] hover:shadow-[0_0_60px_rgba(16,185,129,0.5)] transform hover:-translate-y-1 items-center gap-2">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                <a href="https://play.google.com/store/apps/details?id=com.pomoking.app" target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex bg-primary hover:bg-primary-hover text-background px-10 py-5 rounded-full font-bold text-lg transition-all duration-300 shadow-[0_0_40px_rgba(16,185,129,0.3)] hover:shadow-[0_0_60px_rgba(16,185,129,0.5)] transform hover:-translate-y-1 items-center gap-2">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" />
+                    </svg>
                     Download PomoKing Today
                 </a>
-                <div class="hidden sm:flex flex-col items-center bg-white/5 p-3 rounded-2xl border border-white/10 backdrop-blur-sm reveal transition-transform hover:-translate-y-1 delay-200">
-                    <img src="assets/qr-codes/qr-code.svg" alt="Download PomoKing QR Code" class="w-32 h-32 rounded-xl bg-white p-2">
-                    <span class="text-xs text-gray-400 mt-2 font-medium uppercase tracking-wider">Scan to Download</span>
+                <div
+                    class="hidden sm:flex flex-col items-center bg-white/5 p-3 rounded-2xl border border-white/10 backdrop-blur-sm reveal transition-transform hover:-translate-y-1 delay-200">
+                    <img src="assets/qr-codes/qr-code.svg" alt="Download PomoKing QR Code"
+                        class="w-32 h-32 rounded-xl bg-white p-2">
+                    <span class="text-xs text-gray-400 mt-2 font-medium uppercase tracking-wider">Scan to
+                        Download</span>
                 </div>
             </div>
         </div>
@@ -396,7 +537,8 @@
 
     <!-- Footer -->
     <footer class="border-t border-white/5 bg-background pt-16 pb-8">
-        <div class="max-w-5xl mx-auto px-8 sm:px-16 lg:px-24 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div
+            class="max-w-5xl mx-auto px-8 sm:px-16 lg:px-24 flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="flex items-center gap-3">
                 <img src="assets/icons/icon.png" alt="PomoKing Logo" class="h-8 w-8 rounded-lg grayscale opacity-70">
                 <span class="font-display font-bold text-gray-400">PomoKing</span>
@@ -425,12 +567,12 @@
         // Intersection Observer for scroll animations
         function reveal() {
             var reveals = document.querySelectorAll(".reveal, .reveal-left, .reveal-right");
-            
+
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
                 var elementVisible = 100;
-                
+
                 if (elementTop < windowHeight - elementVisible) {
                     reveals[i].classList.add("active");
                 }
@@ -442,4 +584,5 @@
         setTimeout(reveal, 100);
     </script>
 </body>
+
 </html>
