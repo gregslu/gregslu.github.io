@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PomoKing Support – Help & FAQ</title>
+    <meta name="description"
+        content="Get help with PomoKing, the Pomodoro focus timer. Find answers to common questions, troubleshooting tips, and contact support.">
+    <meta name="keywords" content="PomoKing support, Pomodoro timer help, PomoKing FAQ, PomoKing contact">
+    <link rel="canonical" href="https://gregslu.github.io/pomoking/support.html">
+    <meta property="og:title" content="PomoKing Support – Help & FAQ">
+    <meta property="og:description" content="Get help with PomoKing. Find answers, troubleshooting tips, and contact support.">
+    <meta property="og:url" content="https://gregslu.github.io/pomoking/support.html">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#08110e',
+                        primary: {
+                            DEFAULT: '#10b981', // Emerald 500
+                            hover: '#34d399',   // Emerald 400
+                        },
+                        secondary: '#f59e0b', // Amber 500
+                        surface: 'rgba(255, 255, 255, 0.03)',
+                        surfaceHover: 'rgba(255, 255, 255, 0.08)'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #08110e;
+            color: #ffffff;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #10b981, #34d399, #6ee7b7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glass-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        /* FAQ accordion */
+        .faq-toggle:checked+.faq-header+.faq-body {
+            max-height: 500px;
+            opacity: 1;
+            padding-top: 0.75rem;
+            padding-bottom: 0.25rem;
+        }
+
+        .faq-toggle:checked+.faq-header .faq-chevron {
+            transform: rotate(180deg);
+        }
+
+        .faq-body {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, opacity 0.3s ease, padding 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="antialiased font-sans min-h-screen flex flex-col">
+
+    <!-- Header Navigation -->
+    <nav class="w-full border-b border-white/5 bg-background/70 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-8 sm:px-16 lg:px-24">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                    <img src="assets/icons/icon.png" alt="PomoKing Logo"
+                        class="h-10 w-10 rounded-xl shadow-lg shadow-primary/20">
+                    <span class="font-display font-bold text-xl tracking-wide text-white">PomoKing</span>
+                </a>
+                <a href="index.html"
+                    class="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors bg-white/5 hover:bg-white/10 px-4 py-2 rounded-full border border-white/10">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-3xl mx-auto px-8 sm:px-16 lg:px-24 py-16 w-full">
+        <div class="glass-card rounded-3xl p-8 sm:p-12">
+            <h1 class="text-4xl sm:text-5xl font-display font-bold text-gradient mb-2">Support</h1>
+            <p class="text-sm text-gray-500 mb-10">We're here to help you get the most out of PomoKing.</p>
+
+            <div class="prose prose-invert max-w-none text-gray-300 space-y-10">
+
+                <!-- Contact Section -->
+                <div>
+                    <h2 class="text-2xl font-display font-bold text-white mb-4 border-b border-white/5 pb-2">
+                        Contact Us
+                    </h2>
+                    <p class="leading-relaxed mb-4">
+                        Have a question, bug report, or feature request? Reach out directly via email and we'll get back
+                        to you as soon as possible.
+                    </p>
+                    <a href="mailto:greg.slusarski@gmail.com"
+                        class="inline-flex items-center gap-3 bg-primary/10 hover:bg-primary/20 border border-primary/20 hover:border-primary/40 text-primary px-6 py-4 rounded-2xl transition-all duration-300 group">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                        <div>
+                            <span class="block text-sm text-gray-400 font-medium">Email Support</span>
+                            <span
+                                class="block text-primary group-hover:text-primary-hover font-semibold transition-colors">greg.slusarski@gmail.com</span>
+                        </div>
+                    </a>
+                    <p class="text-sm text-gray-500 mt-3">We typically respond within 24–48 hours.</p>
+                </div>
+
+                <!-- FAQ Section -->
+                <div>
+                    <h2 class="text-2xl font-display font-bold text-white mb-4 border-b border-white/5 pb-2">
+                        Frequently Asked Questions
+                    </h2>
+
+                    <div class="space-y-3 mt-6">
+
+                        <!-- FAQ 1 -->
+                        <div class="rounded-xl bg-white/[0.02] border border-white/5 overflow-hidden">
+                            <input type="checkbox" id="faq1" class="faq-toggle hidden peer">
+                            <label for="faq1"
+                                class="faq-header flex items-center justify-between px-5 py-4 cursor-pointer hover:bg-white/[0.03] transition-colors">
+                                <span class="font-medium text-white text-sm sm:text-base">How do I start a focus
+                                    session?</span>
+                                <svg class="faq-chevron w-5 h-5 text-gray-500 transition-transform duration-300 shrink-0"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </label>
+                            <div class="faq-body px-5 text-gray-400 text-sm leading-relaxed">
+                                <p>Open the app, choose a tag for your session, and tap the start button. PomoKing will
+                                    guide you through focus intervals and breaks automatically.</p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 2 -->
+                        <div class="rounded-xl bg-white/[0.02] border border-white/5 overflow-hidden">
+                            <input type="checkbox" id="faq2" class="faq-toggle hidden peer">
+                            <label for="faq2"
+                                class="faq-header flex items-center justify-between px-5 py-4 cursor-pointer hover:bg-white/[0.03] transition-colors">
+                                <span class="font-medium text-white text-sm sm:text-base">Can I customize the timer
+                                    durations?</span>
+                                <svg class="faq-chevron w-5 h-5 text-gray-500 transition-transform duration-300 shrink-0"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </label>
+                            <div class="faq-body px-5 text-gray-400 text-sm leading-relaxed">
+                                <p>Yes! Go to Settings within the app to adjust your focus duration, short break, and
+                                    long break intervals to match your preferred workflow.</p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 3 -->
+                        <div class="rounded-xl bg-white/[0.02] border border-white/5 overflow-hidden">
+                            <input type="checkbox" id="faq3" class="faq-toggle hidden peer">
+                            <label for="faq3"
+                                class="faq-header flex items-center justify-between px-5 py-4 cursor-pointer hover:bg-white/[0.03] transition-colors">
+                                <span class="font-medium text-white text-sm sm:text-base">Is my data backed up?</span>
+                                <svg class="faq-chevron w-5 h-5 text-gray-500 transition-transform duration-300 shrink-0"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </label>
+                            <div class="faq-body px-5 text-gray-400 text-sm leading-relaxed">
+                                <p>Your session data is stored locally on your device. On supported platforms, data can
+                                    be backed up via Google Drive (Android) or iCloud (iOS). Check your device's backup
+                                    settings to ensure your data is safe.</p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 4 -->
+                        <div class="rounded-xl bg-white/[0.02] border border-white/5 overflow-hidden">
+                            <input type="checkbox" id="faq4" class="faq-toggle hidden peer">
+                            <label for="faq4"
+                                class="faq-header flex items-center justify-between px-5 py-4 cursor-pointer hover:bg-white/[0.03] transition-colors">
+                                <span class="font-medium text-white text-sm sm:text-base">How do I manage or cancel my
+                                    subscription?</span>
+                                <svg class="faq-chevron w-5 h-5 text-gray-500 transition-transform duration-300 shrink-0"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </label>
+                            <div class="faq-body px-5 text-gray-400 text-sm leading-relaxed">
+                                <p>Subscriptions are managed through your device's app store. On <strong
+                                        class="text-white">Android</strong>, go to Google Play Store → Subscriptions. On
+                                    <strong class="text-white">iOS</strong>, go to Settings → Apple ID → Subscriptions.
+                                    You can cancel or change your plan at any time.</p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 5 -->
+                        <div class="rounded-xl bg-white/[0.02] border border-white/5 overflow-hidden">
+                            <input type="checkbox" id="faq5" class="faq-toggle hidden peer">
+                            <label for="faq5"
+                                class="faq-header flex items-center justify-between px-5 py-4 cursor-pointer hover:bg-white/[0.03] transition-colors">
+                                <span class="font-medium text-white text-sm sm:text-base">The app is not working
+                                    correctly. What should I do?</span>
+                                <svg class="faq-chevron w-5 h-5 text-gray-500 transition-transform duration-300 shrink-0"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </label>
+                            <div class="faq-body px-5 text-gray-400 text-sm leading-relaxed">
+                                <p>Try these steps:</p>
+                                <ol class="list-decimal pl-5 mt-2 space-y-1">
+                                    <li>Make sure you are running the latest version of PomoKing from the App Store or
+                                        Google Play.</li>
+                                    <li>Restart the app.</li>
+                                    <li>Restart your device.</li>
+                                    <li>If the issue persists, contact us at <a href="mailto:greg.slusarski@gmail.com"
+                                            class="text-primary hover:text-primary-hover transition-colors">greg.slusarski@gmail.com</a>
+                                        with a description of the problem.</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 6 -->
+                        <div class="rounded-xl bg-white/[0.02] border border-white/5 overflow-hidden">
+                            <input type="checkbox" id="faq6" class="faq-toggle hidden peer">
+                            <label for="faq6"
+                                class="faq-header flex items-center justify-between px-5 py-4 cursor-pointer hover:bg-white/[0.03] transition-colors">
+                                <span class="font-medium text-white text-sm sm:text-base">How do I request a
+                                    refund?</span>
+                                <svg class="faq-chevron w-5 h-5 text-gray-500 transition-transform duration-300 shrink-0"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </label>
+                            <div class="faq-body px-5 text-gray-400 text-sm leading-relaxed">
+                                <p>Refunds are processed by Apple or Google depending on your platform. Visit <a
+                                        href="https://support.apple.com/en-us/HT204084" target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="text-primary hover:text-primary-hover transition-colors">Apple's refund
+                                        page</a> or <a href="https://support.google.com/googleplay/answer/2479637"
+                                        target="_blank" rel="noopener noreferrer"
+                                        class="text-primary hover:text-primary-hover transition-colors">Google Play's
+                                        refund page</a> for assistance.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Additional Resources -->
+                <div>
+                    <h2 class="text-2xl font-display font-bold text-white mb-4 border-b border-white/5 pb-2">
+                        Additional Resources
+                    </h2>
+                    <div class="grid sm:grid-cols-2 gap-4 mt-6">
+                        <a href="privacy_policy.html"
+                            class="flex items-center gap-4 px-5 py-4 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.05] hover:border-white/10 transition-all duration-300 group">
+                            <div
+                                class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div>
+                                <span
+                                    class="block text-white font-medium text-sm group-hover:text-primary transition-colors">Privacy
+                                    Policy</span>
+                                <span class="block text-gray-500 text-xs">How we handle your data</span>
+                            </div>
+                        </a>
+                        <a href="terms_conditions.html"
+                            class="flex items-center gap-4 px-5 py-4 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.05] hover:border-white/10 transition-all duration-300 group">
+                            <div
+                                class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div>
+                                <span
+                                    class="block text-white font-medium text-sm group-hover:text-primary transition-colors">Terms
+                                    of Service</span>
+                                <span class="block text-gray-500 text-xs">Usage terms & conditions</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 bg-background/50 pt-8 pb-8 mt-auto">
+        <div
+            class="max-w-5xl mx-auto px-8 sm:px-16 lg:px-24 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <img src="assets/icons/icon.png" alt="PomoKing Logo" class="h-6 w-6 rounded-lg grayscale opacity-70">
+                <span class="font-display font-bold text-sm text-gray-500">PomoKing</span>
+            </div>
+            <p class="text-xs text-gray-500">© 2026 PomoKing. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
