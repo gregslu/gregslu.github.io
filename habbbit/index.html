@@ -85,10 +85,6 @@
     background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
     background-size: 22px 22px;
   }
-  .phone-frame {
-    border: 10px solid #111d18;
-    box-shadow: 0 0 0 2px #24382f, 0 30px 60px -20px rgba(0,0,0,0.7);
-  }
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
   .reveal.in { opacity: 1; transform: translateY(0); }
   .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -160,20 +156,20 @@
       </p>
 
       <div class="mt-9 flex flex-wrap items-center gap-4">
-        <a href="#" id="app-store-link" class="inline-flex items-center gap-3 bg-white text-ink px-5 py-3 rounded-2xl font-semibold hover:bg-slate-100 transition-colors shadow-lg">
+        <a href="https://apps.apple.com/us/app/id6800062335" target="_blank" rel="noopener noreferrer" id="app-store-link" class="inline-flex items-center gap-3 bg-white text-ink px-5 py-3 rounded-2xl font-semibold hover:bg-slate-100 transition-colors shadow-lg">
           <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8.94-.14 1.84-.78 3.15-.7 1.6.09 2.83.71 3.6 1.92-3.24 1.97-2.42 6.05.57 7.14-.6 1.5-1.31 2.87-2.4 3.81zM12.03 7.25c-.15-2.23 1.66-4.09 3.74-4.25.29 2.31-2.1 4.42-3.74 4.25z"/></svg>
           <span class="text-left leading-tight">
             <span class="block text-[11px] font-normal text-slate-500">Download on the</span>
             <span class="block text-base -mt-0.5">App Store</span>
           </span>
         </a>
-        <a href="#" id="google-play-link" class="inline-flex items-center gap-3 bg-white text-ink px-5 py-3 rounded-2xl font-semibold hover:bg-slate-100 transition-colors shadow-lg">
+        <div class="inline-flex items-center gap-3 bg-white/10 text-slate-400 border border-white/10 px-5 py-3 rounded-2xl cursor-not-allowed opacity-60 select-none">
           <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 2.4c-.35.2-.6.6-.6 1.1v17c0 .5.25.9.6 1.1l9.35-9.6-9.35-9.6zM15.9 12.9l-9.35 9.6c.15.04.3.04.45 0 .2-.04.4-.12.6-.24l10.9-6.24-2.6-3.12zm3.7-3.5l-2.7-1.56-2.85 3.06 2.85 3.06 2.7-1.56c.5-.29.8-.83.8-1.5s-.3-1.21-.8-1.5zM6.55 1.7c-.2-.04-.35-.04-.5 0-.15.04-.3.1-.45.2l9.3 9.5 2.6-2.98L6.55 1.7z"/></svg>
           <span class="text-left leading-tight">
-            <span class="block text-[11px] font-normal text-slate-500">Get it on</span>
-            <span class="block text-base -mt-0.5">Google Play</span>
+            <span class="block text-[11px] font-normal text-slate-400">Coming soon on</span>
+            <span class="block text-base -mt-0.5 text-slate-300 font-semibold">Google Play</span>
           </span>
-        </a>
+        </div>
       </div>
 
       <div class="mt-8 flex items-center gap-4">
@@ -198,9 +194,9 @@
         <div class="w-72 h-72 bg-mint/10 rounded-full blur-3xl"></div>
       </div>
       <img src="images/screen-habits-active.png" alt="Habbbit app showing daily habits with pixel streak art"
-        class="relative w-64 sm:w-72 rounded-[2.5rem] phone-frame shadow-glow">
-      <img src="images/screen-analytics.png" alt="Habbbit analytics screen with focus charts"
-        class="hidden sm:block absolute -bottom-10 -left-16 w-44 rounded-[2rem] phone-frame rotate-[-8deg]">
+        class="relative w-64 sm:w-72 rounded-2xl shadow-glow">
+      <img src="images/screen-streak.png" alt="Habbbit streak screen with pixel streak art"
+        class="hidden sm:block absolute -bottom-10 -left-16 w-44 rounded-2xl rotate-[-8deg]">
     </div>
   </div>
 </section>
@@ -264,24 +260,24 @@
 
   <div class="mt-14 flex gap-6 px-5 sm:px-8 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-4">
     <div class="reveal shrink-0 snap-center w-64">
-      <img src="images/screen-habits.png" alt="Habit list with pixel-art streaks" class="w-full rounded-[2.5rem] phone-frame">
-      <p class="mt-4 text-center text-sm font-medium text-slate-300">Track every habit</p>
+      <img src="images/screen-habits.png" alt="Habit list with pixel-art streaks" class="w-full rounded-2xl">
+      <p class="mt-4 text-center text-sm font-medium text-slate-300">Tap start. Focus. Watch it add up.</p>
     </div>
     <div class="reveal shrink-0 snap-center w-64">
-      <img src="images/screen-focus-detail.png" alt="Focus session detail with hourly chart" class="w-full rounded-[2.5rem] phone-frame">
-      <p class="mt-4 text-center text-sm font-medium text-slate-300">Stay in focus</p>
+      <img src="images/screen-streak.png" alt="Streak visualization" class="w-full rounded-2xl">
+      <p class="mt-4 text-center text-sm font-medium text-slate-300">Every day adds up to something bigger</p>
     </div>
     <div class="reveal shrink-0 snap-center w-64">
-      <img src="images/screen-analytics.png" alt="Analytics overview with weekly activity" class="w-full rounded-[2.5rem] phone-frame">
-      <p class="mt-4 text-center text-sm font-medium text-slate-300">Understand your patterns</p>
+      <img src="images/screen-goal.png" alt="Goal completion and quote screen" class="w-full rounded-2xl">
+      <p class="mt-4 text-center text-sm font-medium text-slate-300">Hand-picked quotes when you win</p>
     </div>
     <div class="reveal shrink-0 snap-center w-64">
-      <img src="images/screen-share.png" alt="Share card of weekly progress" class="w-full rounded-[2.5rem] phone-frame">
-      <p class="mt-4 text-center text-sm font-medium text-slate-300">Share your progress</p>
+      <img src="images/screen-analytics.png" alt="Analytics overview with weekly activity" class="w-full rounded-2xl">
+      <p class="mt-4 text-center text-sm font-medium text-slate-300">Data-driven insights, not guesswork</p>
     </div>
     <div class="reveal shrink-0 snap-center w-64">
-      <img src="images/screen-settings.png" alt="Settings screen" class="w-full rounded-[2.5rem] phone-frame">
-      <p class="mt-4 text-center text-sm font-medium text-slate-300">Make it yours</p>
+      <img src="images/screen-focus-detail.png" alt="Focus session detail with hourly chart" class="w-full rounded-2xl">
+      <p class="mt-4 text-center text-sm font-medium text-slate-300">See exactly where your time went today</p>
     </div>
   </div>
 </section>
@@ -428,20 +424,20 @@
     <p class="mt-4 text-slate-400 text-lg">Free to download. No account required to get started.</p>
 
     <div class="mt-9 flex flex-wrap items-center justify-center gap-4">
-      <a href="#" class="inline-flex items-center gap-3 bg-white text-ink px-5 py-3 rounded-2xl font-semibold hover:bg-slate-100 transition-colors shadow-lg">
+      <a href="https://apps.apple.com/us/app/id6800062335" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-white text-ink px-5 py-3 rounded-2xl font-semibold hover:bg-slate-100 transition-colors shadow-lg">
         <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8.94-.14 1.84-.78 3.15-.7 1.6.09 2.83.71 3.6 1.92-3.24 1.97-2.42 6.05.57 7.14-.6 1.5-1.31 2.87-2.4 3.81zM12.03 7.25c-.15-2.23 1.66-4.09 3.74-4.25.29 2.31-2.1 4.42-3.74 4.25z"/></svg>
         <span class="text-left leading-tight">
           <span class="block text-[11px] font-normal text-slate-500">Download on the</span>
           <span class="block text-base -mt-0.5">App Store</span>
         </span>
       </a>
-      <a href="#" class="inline-flex items-center gap-3 bg-white text-ink px-5 py-3 rounded-2xl font-semibold hover:bg-slate-100 transition-colors shadow-lg">
+      <div class="inline-flex items-center gap-3 bg-white/10 text-slate-400 border border-white/10 px-5 py-3 rounded-2xl cursor-not-allowed opacity-60 select-none">
         <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 2.4c-.35.2-.6.6-.6 1.1v17c0 .5.25.9.6 1.1l9.35-9.6-9.35-9.6zM15.9 12.9l-9.35 9.6c.15.04.3.04.45 0 .2-.04.4-.12.6-.24l10.9-6.24-2.6-3.12zm3.7-3.5l-2.7-1.56-2.85 3.06 2.85 3.06 2.7-1.56c.5-.29.8-.83.8-1.5s-.3-1.21-.8-1.5zM6.55 1.7c-.2-.04-.35-.04-.5 0-.15.04-.3.1-.45.2l9.3 9.5 2.6-2.98L6.55 1.7z"/></svg>
         <span class="text-left leading-tight">
-          <span class="block text-[11px] font-normal text-slate-500">Get it on</span>
-          <span class="block text-base -mt-0.5">Google Play</span>
+          <span class="block text-[11px] font-normal text-slate-400">Coming soon on</span>
+          <span class="block text-base -mt-0.5 text-slate-300 font-semibold">Google Play</span>
         </span>
-      </a>
+      </div>
     </div>
 
     <div class="mt-9 inline-flex items-center gap-4 bg-surface border border-line rounded-2xl px-6 py-4">
