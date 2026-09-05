@@ -1,1 +1,603 @@
-Hello there. It's empty atm. Check back later
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greg Ślusarski (@gregslu) — Mobile Developer & Indie Maker</title>
+    <meta name="description" content="Digital business card and portfolio of Greg Ślusarski (@gregslu). Mobile app developer crafting iOS and Android applications including Habbbit, PomoKing, and AI Movie Recommendation.">
+    <meta name="keywords" content="Greg Ślusarski, gregslu, Mobile Developer, iOS, Android, Flutter, Indie Maker, Habbbit, PomoKing, Movie Recommendation">
+    <meta name="author" content="Greg Ślusarski">
+    <link rel="canonical" href="https://gregslu.github.io/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Greg Ślusarski (@gregslu) — Mobile Developer & Indie Maker">
+    <meta property="og:description" content="Personal homepage & digital business card. Creator of Habbbit, PomoKing, and AI Movie Recommendation.">
+    <meta property="og:url" content="https://gregslu.github.io/">
+    <meta property="og:image" content="https://gregslu.github.io/assets/avatar-placeholder.svg">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Greg Ślusarski (@gregslu) — Mobile Developer & Indie Maker">
+    <meta name="twitter:description" content="Personal homepage & digital business card. Creator of Habbbit, PomoKing, and AI Movie Recommendation.">
+    <meta name="twitter:image" content="https://gregslu.github.io/assets/avatar-placeholder.svg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#070b14',
+                        surface: '#0d1322',
+                        'surface-card': '#111827',
+                        primary: '#38bdf8',
+                        accent: '#818cf8',
+                        emeraldAccent: '#10b981',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Outfit', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-6px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Ambient noise overlay & custom scrollbar */
+        body {
+            background-color: #070b14;
+            color: #f3f4f6;
+            overflow-x: hidden;
+            font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+        }
+
+        ::selection {
+            background-color: #38bdf8;
+            color: #070b14;
+        }
+
+        /* Glassmorphic border glow */
+        .glass-card {
+            background: rgba(17, 24, 39, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(56, 189, 248, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px -10px rgba(56, 189, 248, 0.15);
+        }
+
+        /* Radial glow mesh */
+        .glow-mesh {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .glow-blob-1 {
+            position: absolute;
+            top: -10%;
+            left: 20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(56, 189, 248, 0) 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+        }
+
+        .glow-blob-2 {
+            position: absolute;
+            top: 30%;
+            right: 15%;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(129, 140, 248, 0.1) 0%, rgba(129, 140, 248, 0) 70%);
+            border-radius: 50%;
+            filter: blur(70px);
+        }
+
+        .glow-blob-3 {
+            position: absolute;
+            bottom: 10%;
+            left: 25%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(16, 185, 129, 0) 70%);
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-sky-500 selection:text-slate-950 relative">
+
+    <!-- Ambient background glows -->
+    <div class="glow-mesh" aria-hidden="true">
+        <div class="glow-blob-1"></div>
+        <div class="glow-blob-2"></div>
+        <div class="glow-blob-3"></div>
+    </div>
+
+    <!-- Interactive Mouse Follower Glow (desktop) -->
+    <div id="cursor-glow" class="hidden md:block fixed w-96 h-96 rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2 z-0 opacity-40 mix-blend-screen transition-opacity duration-300"
+         style="background: radial-gradient(circle, rgba(56, 189, 248, 0.07) 0%, rgba(0, 0, 0, 0) 70%);" aria-hidden="true">
+    </div>
+
+    <!-- Main Container -->
+    <main class="relative z-10 w-full max-w-xl mx-auto px-5 sm:px-6 pt-12 pb-16 flex-grow flex flex-col gap-8">
+
+        <!-- ================= DIGITAL BUSINESS CARD HEADER ================= -->
+        <header class="glass-card rounded-3xl p-6 sm:p-8 relative overflow-hidden shadow-2xl">
+            <!-- Decorative corner accent -->
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-sky-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
+                <!-- Avatar with pulsing status border -->
+                <div class="relative group">
+                    <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden ring-2 ring-sky-500/30 p-1 bg-slate-900/80 shadow-lg group-hover:ring-sky-400 transition-all duration-300">
+                        <!-- Profile Image: Replace 'assets/avatar-placeholder.svg' with your photo e.g. 'assets/avatar.jpg' -->
+                        <img id="profile-avatar"
+                             src="assets/avatar-placeholder.svg" 
+                             alt="Greg Ślusarski" 
+                             class="w-full h-full object-cover rounded-xl transition-transform duration-300 group-hover:scale-105"
+                             loading="eager">
+                    </div>
+                    <!-- Live status badge -->
+                    <span class="absolute -bottom-1.5 -right-1.5 flex h-4 w-4">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 ring-2 ring-slate-900"></span>
+                    </span>
+                </div>
+
+                <!-- Identity info -->
+                <div class="flex-1 min-w-0">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium mb-3">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>Available for projects & apps</span>
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl font-display font-bold text-white tracking-tight">
+                        Greg Ślusarski
+                    </h1>
+                    <p class="text-sm font-mono text-sky-400 font-medium mt-0.5">
+                        @gregslu
+                    </p>
+                    <p class="text-slate-300 text-sm mt-3 leading-relaxed">
+                        Mobile App Developer & Indie Maker. Crafting clean, focused iOS & Android apps with modern native and cross-platform stacks.
+                    </p>
+
+                    <!-- Tech Stack & Language Badges -->
+                    <div class="mt-3.5 flex flex-wrap items-center gap-2">
+                        <div class="flex items-center gap-1.5">
+                            <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 text-xs font-medium font-mono">
+                                <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>Flutter
+                            </span>
+                            <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 text-xs font-medium font-mono">
+                                <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>Dart
+                            </span>
+                        </div>
+                        <span class="text-slate-600 hidden sm:inline">&bull;</span>
+                        <div class="flex items-center gap-1.5 text-xs text-slate-300">
+                            <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/[0.05] border border-white/10 text-slate-200" title="Fluent in English">
+                                🇬🇧 English
+                            </span>
+                            <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/[0.05] border border-white/10 text-slate-200" title="Native Polish speaker">
+                                🇵🇱 Polski
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Action Links / Contact Pills -->
+            <div class="mt-6 pt-6 border-t border-white/5 grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                <!-- GitHub -->
+                <a href="https://github.com/gregslu" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   id="link-github"
+                   class="flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/5 hover:border-white/15 text-slate-200 hover:text-white text-xs font-medium transition-all group">
+                    <svg class="w-4 h-4 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    </svg>
+                    <span>GitHub</span>
+                </a>
+
+                <!-- Twitter / X -->
+                <a href="https://x.com/gregslu" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   id="link-twitter"
+                   class="flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/5 hover:border-white/15 text-slate-200 hover:text-white text-xs font-medium transition-all group">
+                    <svg class="w-3.5 h-3.5 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    <span>Twitter / X</span>
+                </a>
+
+                <!-- Copy Email Button -->
+                <button type="button"
+                        id="btn-copy-email"
+                        onclick="copyEmailToClipboard()"
+                        title="Click to copy email address"
+                        class="flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/5 hover:border-white/15 text-slate-200 hover:text-white text-xs font-medium transition-all group">
+                    <svg class="w-4 h-4 text-sky-400 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                    <span id="copy-email-label">Email</span>
+                </button>
+
+                <!-- Share / QR Modal Button -->
+                <button type="button"
+                        id="btn-open-share"
+                        onclick="toggleQrModal(true)"
+                        title="Show digital business card QR code"
+                        class="flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/20 hover:border-sky-500/30 text-sky-300 hover:text-sky-200 text-xs font-medium transition-all group">
+                    <svg class="w-4 h-4 text-sky-400 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/>
+                    </svg>
+                    <span>Card QR</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- ================= APPS & PROJECTS SECTION ================= -->
+        <section class="space-y-4">
+            <div class="flex items-center justify-between px-1">
+                <h2 class="text-xs font-mono font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-sm bg-sky-400 inline-block"></span>
+                    Featured Mobile Apps & Projects
+                </h2>
+                <span class="text-xs text-slate-500 font-mono">3 Live Apps</span>
+            </div>
+
+            <!-- App 1: Habbbit -->
+            <a href="https://habbbit.app/" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               id="card-habbbit"
+               class="glass-card rounded-2xl p-5 block group relative overflow-hidden">
+                <div class="flex items-start gap-4">
+                    <!-- App Icon -->
+                    <img src="assets/habbbit-icon.png" 
+                         alt="Habbbit App Icon" 
+                         class="w-14 h-14 rounded-2xl object-cover shadow-md shrink-0 border border-white/10 group-hover:scale-105 transition-all duration-300">
+
+                    <!-- Content -->
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between gap-2">
+                            <h3 class="text-base font-display font-bold text-white group-hover:text-emerald-300 transition-colors flex items-center flex-wrap gap-1.5">
+                                <span>Habbbit</span>
+                                <span class="text-[11px] font-mono font-normal px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                                    iOS
+                                </span>
+                                <span class="text-[11px] font-mono font-normal px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                                    Android
+                                </span>
+                            </h3>
+                            <svg class="w-4 h-4 text-slate-500 group-hover:text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </div>
+                        <p class="text-xs text-slate-400 font-mono mt-0.5">habbbit.app</p>
+                        <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                            Habit tracker & stopwatch with living pixel-art streaks and deep focus session analytics to keep daily momentum unbroken.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 mt-3">
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded-md bg-white/[0.04] text-slate-300 border border-white/5">Habit Tracker</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded-md bg-white/[0.04] text-slate-300 border border-white/5">Pixel-Art Streaks</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded-md bg-white/[0.04] text-slate-300 border border-white/5">Stopwatch</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- App 2: PomoKing -->
+            <a href="https://pomoking.app/" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               id="card-pomoking"
+               class="glass-card rounded-2xl p-5 block group relative overflow-hidden">
+                <div class="flex items-start gap-4">
+                    <!-- App Icon -->
+                    <img src="assets/pomoking-icon.png" 
+                         alt="PomoKing App Icon" 
+                         class="w-14 h-14 rounded-2xl object-cover shadow-md shrink-0 border border-white/10 group-hover:scale-105 transition-all duration-300">
+
+                    <!-- Content -->
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between gap-2">
+                            <h3 class="text-base font-display font-bold text-white group-hover:text-amber-300 transition-colors flex items-center flex-wrap gap-1.5">
+                                <span>PomoKing</span>
+                                <span class="text-[11px] font-mono font-normal px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                                    iOS
+                                </span>
+                                <span class="text-[11px] font-mono font-normal px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                                    Android
+                                </span>
+                            </h3>
+                            <svg class="w-4 h-4 text-slate-500 group-hover:text-amber-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </div>
+                        <p class="text-xs text-slate-400 font-mono mt-0.5">pomoking.app</p>
+                        <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                            Distraction-free Pomodoro focus timer crafted for deep work. Master daily productivity, track time blocks, and eliminate burnout.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 mt-3">
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded-md bg-white/[0.04] text-slate-300 border border-white/5">Pomodoro</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded-md bg-white/[0.04] text-slate-300 border border-white/5">Focus Timer</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded-md bg-white/[0.04] text-slate-300 border border-white/5">Productivity</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- App 3: Movie Recommendation (Swohz) -->
+            <a href="https://play.google.com/store/apps/details?id=com.movie_recommendation" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               id="card-movie-recommendation"
+               class="glass-card rounded-2xl p-5 block group relative overflow-hidden">
+                <div class="flex items-start gap-4">
+                    <!-- App Icon / Badge -->
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-400/20 via-sky-500/10 to-purple-500/5 border border-indigo-500/30 flex items-center justify-center shrink-0 shadow-inner group-hover:scale-105 group-hover:border-indigo-400/50 transition-all duration-300">
+                        <svg class="w-7 h-7 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
+                        </svg>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between gap-2">
+                            <h3 class="text-base font-display font-bold text-white group-hover:text-indigo-300 transition-colors flex items-center gap-2">
+                                Movie Recommendation
+                                <span class="text-xs font-mono font-normal px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                                    Google Play
+                                </span>
+                            </h3>
+                            <svg class="w-4 h-4 text-slate-500 group-hover:text-indigo-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </div>
+                        <p class="text-xs text-slate-400 font-mono mt-0.5">Swohz / Thirteen Soft</p>
+                        <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                            AI-driven movie and television show discovery assistant powered by Google Gemini AI and TVMaze scheduling.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 mt-3">
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded-md bg-white/[0.04] text-slate-300 border border-white/5">Google Gemini AI</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded-md bg-white/[0.04] text-slate-300 border border-white/5">Android</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded-md bg-white/[0.04] text-slate-300 border border-white/5">Discovery</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </section>
+
+        <!-- ================= DIGITAL BUSINESS CARD UTILITY ================= -->
+        <section class="glass-card rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                <h3 class="text-sm font-display font-semibold text-white">Save Digital Contact</h3>
+                <p class="text-xs text-slate-400 mt-0.5">Download vCard (.vcf) directly to your phone contacts.</p>
+            </div>
+            <div class="flex items-center gap-2 w-full sm:w-auto">
+                <button type="button" 
+                        onclick="downloadVCard()"
+                        class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-white/[0.06] hover:bg-white/[0.12] border border-white/10 text-white text-xs font-medium transition-all">
+                    <svg class="w-4 h-4 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                    </svg>
+                    <span>Save Contact (.vcf)</span>
+                </button>
+                <button type="button" 
+                        onclick="toggleQrModal(true)"
+                        class="inline-flex items-center justify-center px-3 py-2 rounded-xl bg-white/[0.06] hover:bg-white/[0.12] border border-white/10 text-slate-300 hover:text-white text-xs font-medium transition-all"
+                        title="Show QR Code">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/>
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="relative z-10 border-t border-white/5 py-8 text-center text-xs text-slate-500">
+        <div class="max-w-xl mx-auto px-5 text-center">
+            <p>&copy; 2026 Greg Ślusarski. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ================= QR CODE MODAL ================= -->
+    <div id="qr-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md transition-opacity">
+        <div class="glass-card rounded-3xl p-6 sm:p-8 max-w-sm w-full relative shadow-2xl text-center border border-white/15">
+            <!-- Close button -->
+            <button onclick="toggleQrModal(false)" 
+                    class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-xl bg-white/5 hover:bg-white/10 transition-colors"
+                    aria-label="Close modal">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <h3 class="text-lg font-display font-bold text-white mb-1">Scan Digital Card</h3>
+            <p class="text-xs text-slate-400 mb-5">Point your camera to instantly open this card or share it.</p>
+
+            <!-- QR Code container with high contrast -->
+            <div class="bg-white p-4 rounded-2xl shadow-inner inline-block mx-auto mb-5">
+                <img id="qr-image" 
+                     src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fgregslu.github.io%2F&format=svg" 
+                     alt="QR Code for gregslu.github.io"
+                     width="200" 
+                     height="200"
+                     class="w-48 h-48 block mx-auto">
+            </div>
+
+            <div class="space-y-2">
+                <button onclick="copySiteLink()" 
+                        id="btn-copy-link"
+                        class="w-full py-2.5 px-4 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-medium text-xs transition-all flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                    <span id="copy-link-text">Copy Website Link</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= FLOATING TOAST NOTIFICATION ================= -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-xl bg-slate-900/90 border border-sky-500/30 text-sky-200 text-xs font-medium shadow-2xl backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2">
+        <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        <span id="toast-message">Copied to clipboard!</span>
+    </div>
+
+    <!-- ================= VANILLA JS LOGIC ================= -->
+    <script>
+        const EMAIL_ADDRESS = "greg.slusarski@gmail.com";
+        const WEBSITE_URL = "https://gregslu.github.io/";
+
+        // Toast trigger helper
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.textContent = message;
+            toast.classList.remove('opacity-0', 'translate-y-2');
+            toast.classList.add('opacity-100', 'translate-y-0');
+
+            setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'translate-y-2');
+            }, 2500);
+        }
+
+        // Copy email to clipboard
+        function copyEmailToClipboard() {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(EMAIL_ADDRESS).then(() => {
+                    showToast("Email copied: " + EMAIL_ADDRESS);
+                }).catch(() => fallbackCopy(EMAIL_ADDRESS, "Email copied!"));
+            } else {
+                fallbackCopy(EMAIL_ADDRESS, "Email copied: " + EMAIL_ADDRESS);
+            }
+        }
+
+        // Copy site link
+        function copySiteLink() {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(WEBSITE_URL).then(() => {
+                    showToast("Site link copied to clipboard!");
+                    toggleQrModal(false);
+                }).catch(() => fallbackCopy(WEBSITE_URL, "Site link copied!"));
+            } else {
+                fallbackCopy(WEBSITE_URL, "Site link copied to clipboard!");
+                toggleQrModal(false);
+            }
+        }
+
+        // Fallback copy for environments without navigator.clipboard
+        function fallbackCopy(text, successMsg) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-999999px";
+            textArea.style.top = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showToast(successMsg);
+            } catch (err) {
+                window.location.href = "mailto:" + EMAIL_ADDRESS;
+            }
+            document.body.removeChild(textArea);
+        }
+
+        // QR Modal Toggle
+        function toggleQrModal(show) {
+            const modal = document.getElementById('qr-modal');
+            if (show) {
+                modal.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden');
+            } else {
+                modal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }
+        }
+
+        // Close modal on escape key or clicking backdrop
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') toggleQrModal(false);
+        });
+        document.getElementById('qr-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'qr-modal') toggleQrModal(false);
+        });
+
+        // Download vCard (.vcf)
+        function downloadVCard() {
+            const vCardData = [
+                'BEGIN:VCARD',
+                'VERSION:3.0',
+                'FN:Greg Ślusarski',
+                'N:Ślusarski;Greg;;;',
+                'TITLE:Mobile App Developer & Indie Maker',
+                'EMAIL;TYPE=INTERNET,HOME:' + EMAIL_ADDRESS,
+                'URL;TYPE=WORK:' + WEBSITE_URL,
+                'URL;TYPE=GitHub:https://github.com/gregslu',
+                'URL;TYPE=Twitter:https://x.com/gregslu',
+                'NOTE:Creator of Habbbit, PomoKing, and Movie Recommendation.',
+                'END:VCARD'
+            ].join('\r\n');
+
+            const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.setAttribute('download', 'Greg_Slusarski.vcf');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast("Downloaded contact card (.vcf)");
+        }
+
+        // Mouse glow movement (desktop)
+        const glow = document.getElementById('cursor-glow');
+        if (glow && window.matchMedia('(pointer: fine)').matches) {
+            window.addEventListener('pointermove', (e) => {
+                glow.style.left = `${e.clientX}px`;
+                glow.style.top = `${e.clientY}px`;
+            });
+        }
+    </script>
+</body>
+</html>

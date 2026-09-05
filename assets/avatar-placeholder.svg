@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="240" y2="240" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="40" y1="40" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+    <linearGradient id="ringGrad" x1="0" y1="0" x2="240" y2="240" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#c084fc" stop-opacity="0.8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background base -->
+  <rect width="240" height="240" rx="120" fill="url(#bgGrad)" />
+  <rect width="236" height="236" x="2" y="2" rx="118" stroke="url(#ringGrad)" stroke-width="2" opacity="0.6" />
+
+  <!-- Abstract Dev Silhouette / Monogram -->
+  <circle cx="120" cy="92" r="42" fill="url(#accentGrad)" opacity="0.9" />
+  
+  <!-- Modern Geometric Body Curve -->
+  <path d="M48 206 C54 158, 86 146, 120 146 C154 146, 186 158, 192 206" fill="url(#accentGrad)" opacity="0.85" />
+  
+  <!-- Subtle inner ambient glow -->
+  <circle cx="120" cy="92" r="30" fill="#ffffff" opacity="0.15" />
+
+  <!-- Monogram Initials GS in Outfit Font -->
+  <text x="120" y="99" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="1">GS</text>
+</svg>
